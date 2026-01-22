@@ -3,36 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Ivan - Game Developer Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        * {
             margin: 0;
-            background-color: #f0f0f0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Section styling */
+        section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         h1 {
-            color: #333;
-            font-size: 3em;
-            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
         }
 
-        img {
-            max-width: 500px;
-            width: 90%;
-            height: auto;
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Links styling */
+        section a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        section a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Who I Am section with photo */
+        .about-content {
+            position: relative;
+        }
+
+        .about-photo {
+            float: left;
+            width: 450px;
+            height: 450px;
+            object-fit: cover;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            display: block;
+        }
+
+        /* Image carousel */
+        .carousel-container {
+            overflow-x: auto;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+        }
+
+        .carousel img {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Scrollbar styling */
+        .carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .carousel-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .about-photo {
+                float: none;
+                width: 100%;
+                height: auto;
+                max-width: 450px;
+                margin-right: 0;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9em;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .carousel img {
+                width: 300px;
+                height: 187px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <img src="img/hello.jpg" alt="Hello World">
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#who-i-am">Who I Am</a></li>
+            <li><a href="#what-i-do">What I Do Now</a></li>
+            <li><a href="#looking-for">Who I'm Looking For</a></li>
+            <li><a href="#ideal-person">The Ideal Person</a></li>
+            <li><a href="#collaboration">Collaboration Model</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Who I Am Section -->
+        <section id="who-i-am">
+            <h1>Who I Am</h1>
+            <div class="about-content">
+                <img src="img/photo.jpg" alt="Ivan - Game Developer" class="about-photo">
+                <p>Hello! My name is Ivan.</p>
+                <p>I'm a game developer with 8 years of professional experience in the industry.</p>
+                <p>Over the years, I've worked on both mobile and live-service games, including Cut the Rope Daily, World Poker Club, and Wheel of Fortune, collaborating with studios such as Zynga, ZeptoLab, and Scopely. My background spans full-cycle game development, long-running projects, and production environments where performance, scalability, and maintainability matter.</p>
+                <p>While I've worked in teams and large companies, I'm most driven by deep technical challenges, experimental systems, and projects where engineering and design tightly intertwine.</p>
+            </div>
+        </section>
+
+        <!-- What I Do Now Section -->
+        <section id="what-i-do">
+            <h1>What I Do Now</h1>
+            <p>In recent years, I became deeply focused on Data-Oriented Design (DOD) in game development. This interest led me to Unity DOTS / ECS, and eventually to starting my own long-term personal project.</p>
+            
+            <h2>Little Planet Keeper</h2>
+            <p>Little Planet Keeper is a planet-scale simulation game where the player nurtures and guides tens — and potentially hundreds — of thousands of living entities on a small planet. The core goal is to sustain life on the planet for as long as possible while dealing with emergent, often chaotic behavior caused by population growth, limited resources, and environmental changes.</p>
+            
+            <p>The project is currently in early development. I have a very raw prototype available on <a href="https://petr-pes.itch.io/little-planet-keeper" target="_blank"><strong>itch.io</strong></a> to demonstrate the project's direction. At the moment, I'm focused on the project's physics engine and AI systems.</p>
+            
+            <p>This project serves several purposes for me:</p>
+            <ul>
+                <li>To deeply explore Data-Oriented Design and Unity DOTS in a real, complex production scenario</li>
+                <li>To research AI systems such as need-based behavior, action chaining, and emergent decision-making in a data-oriented context</li>
+                <li>To test how AI-assisted coding can enable a solo developer to build systems that would traditionally require a team</li>
+                <li>To create a game that gives the player a "God-like" perspective, while also demonstrating how fragile ecosystems and overpopulation can be</li>
+                <li>To openly share knowledge and promote data-oriented thinking in game development by lectures / demonstration videos / coding streams</li>
+            </ul>
+
+            <p>Long-term, I dream of building an open educational platform where I can:</p>
+            <ul>
+                <li>Share development insights</li>
+                <li>Talk through real production problems</li>
+                <li>Give lectures on Unity, ECS, computer graphics, C#, and game architecture</li>
+            </ul>
+
+            <!-- Image Carousel -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <img src="img/little_planet_keeper/1.jpg" alt="Little Planet Keeper Screenshot 1">
+                    <img src="img/little_planet_keeper/2.jpg" alt="Little Planet Keeper Screenshot 2">
+                    <img src="img/little_planet_keeper/3.jpg" alt="Little Planet Keeper Screenshot 3">
+                    <img src="img/little_planet_keeper/4.jpg" alt="Little Planet Keeper Screenshot 4">
+                    <img src="img/little_planet_keeper/5.jpg" alt="Little Planet Keeper Screenshot 5">
+                    <img src="img/little_planet_keeper/6.jpg" alt="Little Planet Keeper Screenshot 6">
+                    <img src="img/little_planet_keeper/7.jpg" alt="Little Planet Keeper Screenshot 7">
+                    <img src="img/little_planet_keeper/8.jpg" alt="Little Planet Keeper Screenshot 8">
+                </div>
+            </div>
+        </section>
+
+        <!-- Who I Am Looking For Section -->
+        <section id="looking-for">
+            <h1>Who I Am Looking For</h1>
+            <p>I am a highly focused and technically driven developer, but community building, outreach, and audience growth are not my strengths. To balance this, I'm looking for a Community Partner / Growth & Support Lead who wants to grow alongside the project.</p>
+            
+            <p>My goal is to:</p>
+            <ul>
+                <li>Build a small but genuine community around the project</li>
+                <li>Attract donation-based support (Patreon, Ko-fi, itch.io, etc.)</li>
+                <li>Potentially fund development time, educational content, and outreach</li>
+                <li>Reinvest part of the income into visibility (tools, hosting, promotion)</li>
+            </ul>
+
+            <p>Any form of sustainable financial support would significantly increase development speed and long-term commitment.</p>
+        </section>
+
+        <!-- The Ideal Person Section -->
+        <section id="ideal-person">
+            <h1>The Ideal Person</h1>
+            <p>I'm looking for someone who:</p>
+            <ul>
+                <li>Is genuinely excited by the project and its ideas</li>
+                <li>Enjoys building communities from the ground up</li>
+                <li>Understands donation-based and creator-support models</li>
+                <li>Can communicate vision, progress, and intent clearly and honestly</li>
+                <li>Is comfortable with open development and transparency</li>
+                <li>Thinks long-term and values trust over hype</li>
+            </ul>
+
+            <p>Deep knowledge of the game market is not required.</p>
+            
+            <p>However, it would be a strong plus if you:</p>
+            <ul>
+                <li>Enjoy simulation, sandbox, or "nurturing" games</li>
+                <li>Have one or two favorite games with systemic or emergent mechanics</li>
+                <li>Are curious about how complex systems behave at scale</li>
+            </ul>
+        </section>
+
+        <!-- Collaboration Model Section -->
+        <section id="collaboration">
+            <h1>Collaboration Model</h1>
+            <p>This is not a traditional employment position.</p>
+            
+            <p>I see this role as a partnership, based on:</p>
+            <ul>
+                <li>Revenue or donation sharing</li>
+                <li>Transparent goals and metrics</li>
+                <li>Mutual trust and creative freedom</li>
+            </ul>
+        </section>
+
+        <!-- Requirements Section -->
+        <section id="requirements">
+            <h1>Candidate Requirements — Community / Partnership Manager (Revenue Share)</h1>
+            
+            <h3>Mindset & Motivation</h3>
+            <ul>
+                <li>Genuine interest in indie games and long-term projects</li>
+                <li>Comfortable with slow, organic growth (not hype-driven marketing)</li>
+                <li>Understands that community = relationships, not numbers</li>
+                <li>Self-driven and proactive, able to work without constant supervision</li>
+                <li>Looking for a partnership, not a short-term gig</li>
+            </ul>
+
+            <h3>Community & Communication</h3>
+            <ul>
+                <li>Experience managing or participating in online communities (Discord, Reddit, forums, etc.)</li>
+                <li>Able to start and sustain conversations, not just moderate</li>
+                <li>Strong written communication skills</li>
+                <li>Empathy and respect toward players and supporters</li>
+                <li>Comfortable being a public-facing voice of the project</li>
+            </ul>
+
+            <h3>Fundraising & Support Awareness</h3>
+            <ul>
+                <li>Understanding of donation-based support models (Patreon, Ko-fi, itch.io, etc.)</li>
+                <li>Able to present donations as participation and support, not pressure</li>
+                <li>Comfortable asking for support in a transparent and respectful way</li>
+                <li>Understands value exchange (access, influence, closeness to development)</li>
+            </ul>
+
+            <h3>Content & Storytelling</h3>
+            <ul>
+                <li>Ability to translate development progress into engaging updates</li>
+                <li>Can explain technical or complex ideas in accessible language</li>
+                <li>Helps shape and maintain a clear project narrative</li>
+                <li>Knows how to keep the community informed without overpromising</li>
+            </ul>
+
+            <h3>Platforms & Tools</h3>
+            <ul>
+                <li>Confident using Discord (roles, channels, moderation, events)</li>
+                <li>Familiar with at least one outreach platform (Twitter/X, Reddit, itch.io, etc.)</li>
+                <li>Basic organizational skills (notes, feedback summaries, simple metrics)</li>
+                <li>No advanced marketing tools required — clarity and consistency matter more</li>
+            </ul>
+
+            <h3>Collaboration & Ethics</h3>
+            <ul>
+                <li>Honest, transparent, and comfortable with open development</li>
+                <li>Respects creative boundaries and developer focus</li>
+                <li>Willing to give and receive feedback constructively</li>
+                <li>Understands revenue share / donation-based collaboration</li>
+            </ul>
+
+            <h3>Nice to Have (Not Required)</h3>
+            <ul>
+                <li>Experience with indie games, simulations, or systemic gameplay</li>
+                <li>Prior involvement in Patreon, Kickstarter, or early-access projects</li>
+                <li>Interest in game design, systems, or AI-driven gameplay</li>
+                <li>Comfort working with a solo developer or small team</li>
+            </ul>
+        </section>
+
+        <!-- Contacts Section -->
+        <section id="contacts">
+            <h1>Contacts</h1>
+            <p>If this project resonates with you, feel free to reach out:</p>
+            <ul>
+                <li><strong>itch.io:</strong> <a href="https://petr-pes.itch.io/" target="_blank">https://petr-pes.itch.io/</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/zhirnovcodes" target="_blank">https://github.com/zhirnovcodes</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ivan-zhirnov-664879180/" target="_blank">https://www.linkedin.com/in/ivan-zhirnov-664879180/</a></li>
+                <li><strong>Instagram:</strong> <a href="https://instagram.com/petr_pes" target="_blank">@petr_pes</a></li>
+                <li><strong>Telegram:</strong> <a href="https://t.me/petr_pes" target="_blank">@petr_pes</a></li>
+                <li><strong>E-mail:</strong> <a href="mailto:ivanzhirnov170991@outlook.com">ivanzhirnov170991@outlook.com</a></li>
+            </ul>
+        </section>
+    </div>
 </body>
 </html>
